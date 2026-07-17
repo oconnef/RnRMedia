@@ -1,1 +1,15 @@
-
+{
+  "updatedAt": "2026-07-17T14:00:00Z",
+  "items": [
+    { "source": "google",    "title": "solar eclipse 2026",                                   "traffic": "2M+ searches",  "url": "https://trends.google.com/trending?geo=US" },
+    { "source": "tiktok",     "title": "#cabincore",                                           "traffic": "48M views",     "url": "https://www.tiktok.com/tag/cabincore" },
+    { "source": "instagram",  "title": "#setlife",                                             "traffic": "2.1M posts",    "url": "https://www.instagram.com/explore/tags/setlife/" },
+    { "source": "reddit",     "title": "Scientists confirm breakthrough in fusion energy",     "traffic": "142K upvotes",  "url": "https://www.reddit.com/r/popular/" },
+    { "source": "youtube",    "title": "Official Trailer — the one everyone is talking about",  "traffic": "8.4M views",    "url": "https://www.youtube.com" },
+    { "source": "google",     "title": "nba finals game 5",                                    "traffic": "1M+ searches",  "url": "https://trends.google.com/trending?geo=US" },
+    { "source": "tiktok",     "title": "#filmmaking",                                          "traffic": "12M views",     "url": "https://www.tiktok.com/tag/filmmaking" },
+    { "source": "instagram",  "title": "#nashville",                                           "traffic": "890K posts",    "url": "https://www.instagram.com/explore/tags/nashville/" },
+    { "source": "reddit",     "title": "This practical effect took our crew 6 weeks to build", "traffic": "98K upvotes",   "url": "https://www.reddit.com/r/popular/" },
+    { "source": "google",     "title": "tropical storm update",                                "traffic": "500K+ searches","url": "https://trends.google.com/trending?geo=US" }
+  ]
+}
