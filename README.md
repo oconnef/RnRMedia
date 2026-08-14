@@ -48,9 +48,19 @@ Five hidden fields record which CTA sent the visitor there:
 | `lead_page` | `services` |
 | `lead_clicked_at` | `2026-08-14T18:22:05.114Z` |
 | `lead_entry` | `services › ugc-pipeline › Start a pipeline →` |
+| `lead_audience` | `brand` or `creator` |
 
 Any link to `#contact` is tracked, on either page. The value survives the
 cross-page jump from the services page via `sessionStorage`.
+
+### Two voices, one form
+
+Links carrying `data-audience="creator"` (currently "Apply to our network" and
+"Partner with us") switch the form's heading, body, placeholders, and dropdown to
+creator language, and set `lead_audience` to `creator`. It reverts to the brand
+default on any other `#contact` click, or as soon as the contact section scrolls
+out of view. Copy for both voices lives in the `COPY` object at the top of the
+contact-voice block in `js/app.js` — edit it there, not in the markup.
 
 ## Deep links
 

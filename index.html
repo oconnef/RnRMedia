@@ -213,8 +213,8 @@
       <div class="creators-head" data-reveal data-d="1">The right creator<br>changes everything.</div>
       <div class="creators-body" data-reveal data-d="2">Our vetted network spans every major platform and niche — from micro-influencers with tight communities to established voices with millions of engaged followers.</div>
       <div class="creators-cta" data-reveal data-d="3">
-        <a href="#contact" class="btn-red btn-red--sm">Apply to our network →</a>
-        <a href="#contact" class="btn-ghost">Partner with us →</a>
+        <a href="#contact" data-audience="creator" class="btn-red btn-red--sm">Apply to our network →</a>
+        <a href="#contact" data-audience="creator" class="btn-ghost">Partner with us →</a>
       </div>
     </div>
 
@@ -242,17 +242,17 @@
 <!-- ── Contact ────────────────────────────────────────────────────────────── -->
 <section id="contact" class="sec">
   <div class="contact-wrap">
-    <div class="eyebrow" data-reveal>Start a conversation</div>
-    <div class="contact-head" data-reveal data-d="1">Let's make<br>it belong.</div>
-    <div class="contact-body" data-reveal data-d="2">Tell us about your brand, your goals, and where you're at right now. We'll get back to you within 24 hours.</div>
+    <div class="eyebrow" id="ct-eyebrow" data-reveal>Start a conversation</div>
+    <div class="contact-head" id="ct-head" data-reveal data-d="1">Let's make<br>it belong.</div>
+    <div class="contact-body" id="ct-body" data-reveal data-d="2">Tell us about your brand, your goals, and where you're at right now. We'll get back to you within 24 hours.</div>
 
     <form id="contact-form" data-reveal data-d="3" method="post" action="#">
       <div class="rr-frow">
-        <input type="text" name="name" placeholder="Your name">
+        <input type="text" id="ct-name" name="name" placeholder="Your name">
         <input type="email" name="email" placeholder="Email address">
       </div>
-      <input type="text" name="company" placeholder="Company / Brand name">
-      <select name="interest">
+      <input type="text" id="ct-org" name="company" placeholder="Company / Brand name">
+      <select id="ct-select" name="interest">
         <option value="" disabled selected>What are you looking for?</option>
         <option>UGC Pipeline Build</option>
         <option>Social Media Management</option>
@@ -261,7 +261,7 @@
         <option>Consultation</option>
         <option>Something else</option>
       </select>
-      <textarea name="message" placeholder="Tell us about your project..."></textarea>
+      <textarea id="ct-message" name="message" placeholder="Tell us about your project..."></textarea>
 
       <!-- Which CTA sent them here — filled by js/app.js -->
       <input type="hidden" id="lead_cta" name="lead_cta">
@@ -269,8 +269,9 @@
       <input type="hidden" id="lead_page" name="lead_page">
       <input type="hidden" id="lead_clicked_at" name="lead_clicked_at">
       <input type="hidden" id="lead_entry" name="lead_entry">
+      <input type="hidden" id="lead_audience" name="lead_audience" value="brand">
 
-      <button type="submit" class="btn-red">Send it →</button>
+      <button type="submit" id="ct-submit" class="btn-red">Send it →</button>
     </form>
   </div>
 </section>

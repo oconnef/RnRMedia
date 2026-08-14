@@ -182,9 +182,85 @@
     window.addEventListener('hashchange', fillLeadSource);
   }
 
+
+  /* ── Contact form voice ───────────────────────────────────────────────────
+     Brand copy by default; creator copy when the visitor arrives from a
+     creator CTA. Reverts on any other #contact click, or once the contact
+     section scrolls out of view. */
+  var COPY = {
+    brand: {
+      eyebrow: 'Start a conversation',
+      head: "Let's make<br>it belong.",
+      body: "Tell us about your brand, your goals, and where you're at right now. We'll get back to you within 24 hours.",
+      name: 'Your name', org: 'Company / Brand name',
+      prompt: 'What are you looking for?',
+      options: ['UGC Pipeline Build', 'Social Media Management', 'Precision Casting', 'Targeted Ads', 'Consultation', 'Something else'],
+      message: 'Tell us about your project...',
+      submit: 'Send it \u2192'
+    },
+    creator: {
+      eyebrow: 'Creator applications',
+      head: "Let's put you<br>to work.",
+      body: "Tell us where you create, who watches, and what you make best. We'll reach out when a brand fits.",
+      name: 'Your name', org: 'Main platform + handle (e.g. TikTok / @you)',
+      prompt: 'What are you here for?',
+      options: ['Join the creator network', 'Brand partnerships', 'Both', 'Something else'],
+      message: 'Your niche, audience size, and links to your best work...',
+      submit: 'Apply \u2192'
+    }
+  };
+
+  var audience = 'brand';
+
+  function applyAudience(kind) {
+    if (kind === audience) return;
+    var c = COPY[kind] || COPY.brand;
+    audience = kind;
+
+    var set = function (id, prop, val) { var el = document.getElementById(id); if (el) el[prop] = val; };
+    set('ct-eyebrow', 'innerHTML', c.eyebrow);
+    set('ct-head', 'innerHTML', c.head);
+    set('ct-body', 'textContent', c.body);
+    set('ct-name', 'placeholder', c.name);
+    set('ct-org', 'placeholder', c.org);
+    set('ct-message', 'placeholder', c.message);
+    set('ct-submit', 'textContent', c.submit);
+    set('lead_audience', 'value', kind);
+
+    var sel = document.getElementById('ct-select');
+    if (!sel) return;
+    var chosen = sel.selectedIndex > 0 ? sel.value : '';
+    sel.innerHTML = '';
+    var ph = document.createElement('option');
+    ph.value = ''; ph.disabled = true; ph.selected = true; ph.textContent = c.prompt;
+    sel.appendChild(ph);
+    c.options.forEach(function (o) {
+      var opt = document.createElement('option');
+      opt.textContent = o;
+      if (o === chosen) opt.selected = true;
+      sel.appendChild(opt);
+    });
+  }
+
+  function initAudience() {
+    if (!document.getElementById('ct-select')) return;   // form only lives on the home page
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="#contact"]');
+      if (a) applyAudience(a.dataset.audience === 'creator' ? 'creator' : 'brand');
+    }, true);
+
+    var contact = document.getElementById('contact');
+    if (contact && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { if (!entry.isIntersecting) applyAudience('brand'); });
+      }, { threshold: 0 }).observe(contact);
+    }
+  }
+
   /* ── Boot ─────────────────────────────────────────────────────────────── */
   function init() {
     initNav();
+    initAudience();
     initReveal();
     initLeadTracking();
     if (document.querySelector('.ttk-track')) {
