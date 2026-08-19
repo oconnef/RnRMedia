@@ -56,7 +56,7 @@ a:hover { color: #E01F20; }
 /* ── Nav ─────────────────────────────────────────────────────────────────── */
 #rr-nav {
   position: fixed; top: 55px; left: 0; right: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  display: grid; grid-template-columns: 1fr 1fr auto 1fr 1fr; align-items: center;
   padding: 20px 60px; border-bottom: 1px solid transparent;
   background: transparent; backdrop-filter: none;
   transition: background 0.35s, backdrop-filter 0.35s, border-color 0.35s;
@@ -65,9 +65,14 @@ a:hover { color: #E01F20; }
   background: rgba(8,7,7,0.96); backdrop-filter: blur(16px);
   border-bottom-color: rgba(244,240,236,0.06);
 }
-.rr-navgrp { display: flex; align-items: center; justify-content: space-evenly; gap: 24px; flex: 1; min-width: 0; }
+.rr-navgrp { display: contents; }
+#rr-nav > .rr-navgrp > .rrnav-link { justify-self: center; }
+#rr-nav > .rr-navgrp:first-of-type > .rrnav-link:first-child { justify-self: start; }
+#rr-nav > .rr-navgrp:first-of-type > .rrnav-link:last-child { justify-self: start; }
+#rr-nav > .rr-navgrp:last-of-type > .rrnav-link:first-child { justify-self: end; }
+#rr-nav > .rr-navgrp:last-of-type > .rrnav-link:last-child { justify-self: end; }
 
-.rrnav-link { font: 500 22px/1 'Sora', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
+.rrnav-link { white-space: nowrap; font: 500 22px/1 'Sora', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
 .rrnav-roll { position: relative; display: inline-block; overflow: hidden; height: 1em; line-height: 1; vertical-align: bottom; padding-right: 2px; }
 .rrnav-roll span { display: block; color: rgba(244,240,236,0.6); transition: transform 0.44s cubic-bezier(0.76,0,0.24,1); }
 .rrnav-roll span:last-child { position: absolute; top: 100%; left: 0; color: #C8191A; }
@@ -118,9 +123,9 @@ a:hover { color: #E01F20; }
 .rr-mm-cta { margin-top: 20px; font: 500 12px/1 'Sora', sans-serif; letter-spacing: 0.16em; text-transform: uppercase; color: #F4F0EC; background: #C8191A; padding: 18px 40px; }
 
 @media (max-width: 1250px) {
-  #rr-nav { padding: 14px 20px; justify-content: center; }
+  #rr-nav { padding: 14px 20px; display: flex; justify-content: center; }
   #rr-menu-btn { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
-  .rr-navgrp { display: none; }
+  .rr-navgrp { display: none !important; }
   .rr-nav-logo { width: 105px; height: 105px; }
   #rr-nav.rr-shrunk .rr-nav-logo { width: 71px; height: 40px; }
   #rr-menu-btn { display: flex; }
@@ -145,7 +150,8 @@ a:hover { color: #E01F20; }
 .btn-red {
   font: 500 11px/1 'Sora', sans-serif; letter-spacing: 0.18em; text-transform: uppercase;
   color: #F4F0EC; background: #C8191A; padding: 18px 36px; text-decoration: none;
-  display: inline-block; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: auto; white-space: nowrap; border: none; cursor: pointer;
   transition: background 0.2s, transform 0.15s;
 }
 .btn-red:hover { background: #E01F20; color: #F4F0EC; }

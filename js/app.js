@@ -191,7 +191,7 @@
     brand: {
       eyebrow: 'Start a conversation',
       head: "Let's make<br>it belong.",
-      body: "Tell us about your brand, your goals, and where you're at right now. We'll get back to you within 24 hours.",
+      body: "Tell us about your vision, we can help take care of the rest.",
       name: 'Your name', org: 'Company / Brand name',
       prompt: 'What are you looking for?',
       options: ['UGC Pipeline Build', 'Social Media Management', 'Precision Casting', 'Targeted Ads', 'Consultation', 'Something else'],
