@@ -68,7 +68,7 @@
         var visible = abs <= 3;
         var scale = visible ? 1 - abs * 0.15 : 0.55;
 
-        card.style.transform = 'translate(-50%,-50%) translateX(' + (offset * 156) + 'px) translateY(' + (abs * 11) + 'px) scale(' + scale + ')';
+        card.style.transform = 'translate(-50%,-50%) translateX(' + (offset * (cards[0].offsetWidth * 0.56)) + 'px) translateY(' + (abs * 14) + 'px) scale(' + scale + ')';
         card.style.opacity = visible ? Math.max(0, 1 - abs * 0.25) : 0;
         card.style.zIndex = 100 - abs;
         card.style.filter = 'blur(' + (visible ? abs * 1.1 : 5) + 'px)';
@@ -158,31 +158,4 @@
   } else {
     init();
   }
-})();
-
-
-/* ── Grid guides toggle (G key or floating button) ── */
-(function () {
-  var KEY = 'rr-grid-guides';
-  function apply(on) { document.body.classList.toggle('grid-guides', !!on); }
-  apply(localStorage.getItem(KEY) === '1');
-  var btn = document.createElement('button');
-  btn.id = 'grid-guide-btn';
-  btn.type = 'button';
-  btn.title = 'Toggle grid guides (G)';
-  btn.setAttribute('aria-label', 'Toggle grid guides');
-  btn.textContent = '\u229E';
-  function toggle() {
-    var on = !document.body.classList.contains('grid-guides');
-    apply(on);
-    localStorage.setItem(KEY, on ? '1' : '0');
-  }
-  btn.addEventListener('click', toggle);
-  document.body.appendChild(btn);
-  document.addEventListener('keydown', function (e) {
-    if (e.metaKey || e.ctrlKey || e.altKey) return;
-    var t = e.target;
-    if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
-    if (e.key === 'g' || e.key === 'G') toggle();
-  });
 })();

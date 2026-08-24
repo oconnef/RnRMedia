@@ -95,10 +95,10 @@
 .work-shot { width: 100%; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .work-shot img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 .work-meta { margin-top: 24px; }
-.work-kicker { font: 500 12.2px/1 'Sora', sans-serif; letter-spacing: 0.2em; text-transform: uppercase; color: #C8191A; margin-bottom: 10px; }
-.work-name { font: 900 22px/1.2 'Archivo Black', sans-serif; color: #F4F0EC; letter-spacing: -0.01em; }
+.work-kicker { font: 600 25px/1.15 'Sora', sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: #C8191A; margin-bottom: 10px; }
+.work-name { font: 900 19px/1.2 'Archivo Black', sans-serif; color: #F4F0EC; letter-spacing: -0.01em; }
 .work-desc { font: 300 14px/1.5 'Sora', sans-serif; color: rgba(244,240,236,0.72); margin-top: 8px; }
-.work-stats { font: 300 16.7px/1.5 'Sora', sans-serif; color: rgba(244,240,236,0.38); margin-top: 10px; }
+.work-stats { font: 300 13.5px/1.55 'Sora', sans-serif; color: rgba(244,240,236,0.38); margin-top: 10px; }
 
 @media (min-width: 1101px) {
   .rr-wgrid > .work-card:not(:first-child) { border-left: 1px solid rgba(244,240,236,0.1); }
