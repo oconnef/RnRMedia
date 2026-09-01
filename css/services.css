@@ -12,7 +12,7 @@ section[id], .svc-item[id] { scroll-margin-top: 140px; }
     @keyframes ttkPulse { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
     .ttk-bar:hover .ttk-track { animation-play-state:paused; }
     .ttk-item:hover .ttk-title { color:#C8191A !important; }
-    @media (max-width:640px){ .ttk-upd { display:none !important; } }
+    @media (max-width:767px){ .ttk-upd { display:none !important; } .ttk-label span:not(.ttk-dot) { display:none; } .ttk-label { padding:0 12px; } }
     @media (prefers-reduced-motion:reduce){
       .ttk-track { animation:none !important; }
       .ttk-dot { animation:none !important; }
@@ -219,7 +219,7 @@ section[id], .svc-item[id] { scroll-margin-top: 140px; }
     @media (max-width:900px) {
       .cast-compare { grid-template-columns:1fr; }
       .cast-side { min-height:0; }      .cast-neg { max-width:none; }
-      .cast-stack, .cast-vs { display:none; }
+      .cast-stack { display:none; }
       .cast-feat-l { padding:16px; }
       .cast-side--us { aspect-ratio:auto; }
       .cast-side--us { grid-template-columns:1fr; padding-top:0; }
@@ -376,4 +376,76 @@ section[id], .svc-item[id] { scroll-margin-top: 140px; }
   /* type scales off the cell itself, so the longest word always fills it */
   .ugc-head > div:first-child { font-size: min(18.6cqw, 120px) !important; }
   .ugc-head > img { width: 78% !important; max-width: none !important; }
+}
+
+/* Social-media feature cells: icon beside the label on phones */
+@media (max-width: 767px) {
+  .sm-feature-row > div {
+    display: grid !important;
+    grid-template-columns: 40px minmax(0, 1fr);
+    column-gap: 14px;
+    align-items: start;
+    padding: 22px 20px 24px !important;
+  }
+  .sm-feature-row > div > span {
+    grid-column: 1; grid-row: 1;
+    margin-top: 0 !important;
+    flex-shrink: 0;
+  }
+  .sm-feature-row > div > div:first-child { grid-column: 2; grid-row: 1; align-self: center; margin-bottom: 0 !important; }
+  .sm-feature-row > div > p { grid-column: 2; grid-row: 2; margin-top: 10px; margin-bottom: 0 !important; }
+}
+
+/* Casting compare on phones: breathing room + VS badge between the panes */
+@media (max-width: 900px) {
+  .cast-compare { row-gap: 0; }
+  .cast-side--them { grid-row: 1; padding-bottom: 30px; }
+  .cast-vs {
+    position: static; transform: none; grid-row: 2; justify-self: center;
+    margin: -29px 0 0; width: 58px; height: 58px;
+  }
+  .cast-side--us { grid-row: 3; }
+  .cast-neg { gap: 0; }
+  .cast-neg-row { padding: 9px 0; }
+}
+
+/* Stacked R&R pane: header above the artwork, not over it */
+@media (max-width: 900px) {
+  .cast-side--us { padding-top: 0; grid-template-rows: auto auto auto; }
+  .cast-side--us .cast-side-head {
+    position: static !important; grid-column: 1; grid-row: 1;
+    padding: 46px 20px 16px !important; text-align: center;
+  }
+  .cast-us-bg { grid-row: 2; }
+  .cast-us-rows { grid-row: 3; padding-top: 0; height: auto !important; }
+}
+
+/* Consultation panel on phones: copy → services → stats, all stacked */
+@media (max-width: 767px) {
+  #consultation .svc-panel-content > div:first-child {
+    flex-direction: column; gap: 0; align-items: stretch;
+  }
+  #consultation .svc-panel-content > div:first-child > div:first-child { display: contents; }
+  #consultation .svc-panel-content p { order: 1; max-width: none; margin-bottom: 26px !important; }
+  #consultation .svc-panel-content > div:first-child > div:last-child {
+    order: 2; grid-template-columns: 1fr !important;
+  }
+  #consultation .svc-panel-content > div:first-child > div:first-child > div:last-child {
+    order: 3; display: flex; justify-content: center; gap: 0 !important; width: 100%;
+    margin-top: 28px; padding-top: 24px;
+    border-top: 1px solid rgba(244,240,236,0.08);
+    text-align: center;
+  }
+  #consultation .svc-panel-content > div:first-child > div:first-child > div:last-child > div:first-child {
+    border-right: 1px solid rgba(244,240,236,0.08);
+  }
+  #consultation .svc-panel-content > div:first-child > div:first-child > div:last-child > div {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 0 28px; width: 140px;
+  }
+  #consultation .svc-panel-content > div:first-child > div:first-child > div:last-child > div > div:first-child {
+    font-size: 32px !important;
+  }
+  #consultation .svc-panel-content > div:last-child { justify-content: stretch !important; }
+  #consultation .svc-panel-content > div:last-child .btn-red { flex: 1; text-align: center; }
 }

@@ -50,7 +50,11 @@ a:hover { color: #E01F20; }
 .ttk-item:hover .ttk-title { color: #C8191A; }
 @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes ttkPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
-@media (max-width: 640px) { .ttk-upd { display: none; } }
+@media (max-width: 767px) {
+  .ttk-upd { display: none; }
+  .ttk-label span:not(.ttk-dot) { display: none; }
+  .ttk-label { padding: 0 12px; }
+}
 @media (prefers-reduced-motion: reduce) { .ttk-track, .ttk-dot { animation: none !important; } }
 
 /* ── Nav ─────────────────────────────────────────────────────────────────── */
