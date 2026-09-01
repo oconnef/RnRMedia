@@ -158,4 +158,24 @@
   } else {
     init();
   }
+
+
+  /* ── Precision Casting: keep label rows on the artwork's drawn box ────── */
+  (function () {
+    var img = document.querySelector('.cast-us-bg');
+    var rows = document.querySelector('.cast-us-rows');
+    if (!img || !rows) return;
+    function sync() {
+      if (window.innerWidth <= 900) { rows.style.height = ''; return; }
+      var box = img.getBoundingClientRect();
+      var ratio = (img.naturalWidth && img.naturalHeight) ? img.naturalWidth / img.naturalHeight : 1402 / 1122;
+      var drawn = Math.min(box.height, box.width / ratio);
+      rows.style.height = drawn ? drawn + 'px' : '';
+    }
+    if (img.complete) sync(); else img.addEventListener('load', sync);
+    window.addEventListener('resize', sync);
+    var panel = img.closest('.svc-panel');
+    if (panel && window.ResizeObserver) new ResizeObserver(sync).observe(panel);
+  })();
+
 })();

@@ -67,10 +67,6 @@ a:hover { color: #E01F20; }
 }
 .rr-navgrp { display: contents; }
 #rr-nav > .rr-navgrp > .rrnav-link { justify-self: center; }
-#rr-nav > .rr-navgrp:first-of-type > .rrnav-link:first-child { justify-self: start; }
-#rr-nav > .rr-navgrp:first-of-type > .rrnav-link:last-child { justify-self: start; }
-#rr-nav > .rr-navgrp:last-of-type > .rrnav-link:first-child { justify-self: end; }
-#rr-nav > .rr-navgrp:last-of-type > .rrnav-link:last-child { justify-self: end; }
 
 .rrnav-link { white-space: nowrap; font: 500 22px/1 'Sora', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; }
 .rrnav-roll { position: relative; display: inline-block; overflow: hidden; height: 1em; line-height: 1; vertical-align: bottom; padding-right: 2px; }
